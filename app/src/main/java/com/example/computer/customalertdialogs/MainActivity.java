@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements
 
         Button showTime = findViewById(R.id.pick_time);
         Button showDate = findViewById(R.id.pick_date);
-
+        Button basicAlertDialog = findViewById(R.id.basic_alert_dialog);
         showTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,6 +42,14 @@ public class MainActivity extends AppCompatActivity implements
             public void onClick(View v) {
                 DialogFragment dialogFragment = new DatePickerFragment();
                 dialogFragment.show(getSupportFragmentManager(), "datePicker");
+            }
+        });
+
+        basicAlertDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BasicAlertDialog alertDialog = new BasicAlertDialog();
+                alertDialog.show(getSupportFragmentManager(), "BasicAlertDialog");
             }
         });
     }
