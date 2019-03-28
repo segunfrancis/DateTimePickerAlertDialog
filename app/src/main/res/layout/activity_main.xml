@@ -42,9 +42,10 @@
             android:text="Basic Alter Dialog" />
 
         <Button
+            android:id="@+id/list_alert_dialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:text="Pick Date" />
+            android:text="List Alert Dialog" />
     </LinearLayout>
 </ScrollView>

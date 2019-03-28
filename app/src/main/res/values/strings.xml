@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Custom Alert Dialogs</string>
+    <string-array name="colors_array">
+        <item>Red</item>
+        <item>Green</item>
+        <item>Blue</item>
+    </string-array>
 </resources>

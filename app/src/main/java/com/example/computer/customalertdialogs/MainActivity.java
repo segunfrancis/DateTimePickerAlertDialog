@@ -1,5 +1,6 @@
 package com.example.computer.customalertdialogs;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.support.v4.app.DialogFragment;
@@ -16,11 +17,6 @@ import java.util.Calendar;
 public class MainActivity extends AppCompatActivity implements
         DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
-/*    final Calendar c = Calendar.getInstance();
-    int maxYear = c.get(Calendar.YEAR) - 20; // this year ( 2011 ) - 20 = 1991
-    int maxMonth = c.get(Calendar.MONTH);
-    int maxDay = c.get(Calendar.DAY_OF_MONTH);*/
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +25,9 @@ public class MainActivity extends AppCompatActivity implements
         Button showTime = findViewById(R.id.pick_time);
         Button showDate = findViewById(R.id.pick_date);
         Button basicAlertDialog = findViewById(R.id.basic_alert_dialog);
+        Button listAlertDialog = findViewById(R.id.list_alert_dialog);
+
+        // Time
         showTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements
             }
         });
 
+        // Date
         showDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,11 +45,21 @@ public class MainActivity extends AppCompatActivity implements
             }
         });
 
+        // Basic Alert Dialog
         basicAlertDialog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 BasicAlertDialog alertDialog = new BasicAlertDialog();
                 alertDialog.show(getSupportFragmentManager(), "BasicAlertDialog");
+            }
+        });
+
+        // List Alert Dialog
+        listAlertDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ListAlertDialog alertDialog = new ListAlertDialog();
+                alertDialog.show(getSupportFragmentManager(), "ListAlertDialog");
             }
         });
     }
