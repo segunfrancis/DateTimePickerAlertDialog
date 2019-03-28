@@ -15,6 +15,13 @@
         android:padding="8dp">
 
         <Button
+            android:id="@+id/hide_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Hide Text" />
+
+        <Button
             android:id="@+id/pick_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -25,14 +32,16 @@
             android:id="@+id/pick_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:text="Pick Time" />
 
         <TextView
             android:id="@+id/text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:textSize="18sp" />
+            android:layout_marginBottom="8dp"
+            android:textSize="18sp"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/basic_alert_dialog"
@@ -47,5 +56,12 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:text="List Alert Dialog" />
+
+        <Button
+            android:id="@+id/multi_choice_alert_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Multichoice Alert Dialog" />
     </LinearLayout>
 </ScrollView>

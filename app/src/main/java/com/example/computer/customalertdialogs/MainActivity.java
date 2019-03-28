@@ -1,6 +1,5 @@
 package com.example.computer.customalertdialogs;
 
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.support.v4.app.DialogFragment;
@@ -22,10 +21,26 @@ public class MainActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final TextView textView = findViewById(R.id.text_view);
+        final Button hideText = findViewById(R.id.hide_text);
         Button showTime = findViewById(R.id.pick_time);
         Button showDate = findViewById(R.id.pick_date);
         Button basicAlertDialog = findViewById(R.id.basic_alert_dialog);
         Button listAlertDialog = findViewById(R.id.list_alert_dialog);
+        Button multiChoiceAlertDialog = findViewById(R.id.multi_choice_alert_dialog);
+
+        // Hide text if visible
+        hideText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (textView.getVisibility() == View.VISIBLE) {
+                    textView.setVisibility(View.GONE);
+                    hideText.setEnabled(false);
+                } else if (textView.getVisibility() == View.GONE) {
+                    hideText.setEnabled(true);
+                }
+            }
+        });
 
         // Time
         showTime.setOnClickListener(new View.OnClickListener() {
@@ -33,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements
             public void onClick(View v) {
                 DialogFragment dialogFragment = new TimePickerFragment();
                 dialogFragment.show(getSupportFragmentManager(), "timePicker");
+                hideText.setEnabled(true);
             }
         });
 
@@ -42,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements
             public void onClick(View v) {
                 DialogFragment dialogFragment = new DatePickerFragment();
                 dialogFragment.show(getSupportFragmentManager(), "datePicker");
+                hideText.setEnabled(true);
             }
         });
 
@@ -62,6 +79,18 @@ public class MainActivity extends AppCompatActivity implements
                 alertDialog.show(getSupportFragmentManager(), "ListAlertDialog");
             }
         });
+
+        // MultiChoice Alert Dialog
+        multiChoiceAlertDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MultiChoiceAlertDialog alertDialog = new MultiChoiceAlertDialog();
+                alertDialog.show(getSupportFragmentManager(), "MultiChoiceAlertFragment");
+
+
+                hideText.setEnabled(true);
+            }
+        });
     }
 
     /**
@@ -75,6 +104,7 @@ public class MainActivity extends AppCompatActivity implements
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         TextView displayText = findViewById(R.id.text_view);
         String date = "Date " + dayOfMonth + "/" + month + "/" + year;
+        displayText.setVisibility(View.VISIBLE);
         displayText.setText(date);
     }
 
@@ -90,6 +120,7 @@ public class MainActivity extends AppCompatActivity implements
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         TextView displayText = findViewById(R.id.text_view);
         String date = "Time " + hourOfDay + ":" + minute;
+        displayText.setVisibility(View.VISIBLE);
         displayText.setText(date);
     }
 }
