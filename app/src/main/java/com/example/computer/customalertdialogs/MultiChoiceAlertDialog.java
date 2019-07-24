@@ -16,7 +16,7 @@ public class MultiChoiceAlertDialog extends DialogFragment {
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         final ArrayList selectedItems = new ArrayList();
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Pick your Toppings");
         builder.setMultiChoiceItems(R.array.toppings, /*checked items*/null,
                 new DialogInterface.OnMultiChoiceClickListener() {
@@ -41,7 +41,7 @@ public class MultiChoiceAlertDialog extends DialogFragment {
                 .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                            dialog.dismiss();
                     }
                 });
         return builder.create();

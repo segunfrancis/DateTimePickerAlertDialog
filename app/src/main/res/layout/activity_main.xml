@@ -63,5 +63,12 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:text="Multichoice Alert Dialog" />
+
+        <Button
+            android:id="@+id/custom_alert_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Custom Alert Dialog" />
     </LinearLayout>
 </ScrollView>

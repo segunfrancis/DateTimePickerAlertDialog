@@ -1,15 +1,21 @@
 package com.example.computer.customalertdialogs;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -24,10 +30,34 @@ public class MainActivity extends AppCompatActivity implements
         final TextView textView = findViewById(R.id.text_view);
         final Button hideText = findViewById(R.id.hide_text);
         Button showTime = findViewById(R.id.pick_time);
-        Button showDate = findViewById(R.id.pick_date);
+        final Button showDate = findViewById(R.id.pick_date);
         Button basicAlertDialog = findViewById(R.id.basic_alert_dialog);
         Button listAlertDialog = findViewById(R.id.list_alert_dialog);
         Button multiChoiceAlertDialog = findViewById(R.id.multi_choice_alert_dialog);
+        Button customAlertDialog = findViewById(R.id.custom_alert_dialog);
+
+        customAlertDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                LayoutInflater inflater = getLayoutInflater();
+                View view = inflater.inflate(R.layout.login_page, null);
+                builder.setView(view);
+                final EditText username = view.findViewById(R.id.username);
+                builder.setPositiveButton("SIGN IN", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(MainActivity.this, "Welcome " + username.getText().toString(), Toast.LENGTH_LONG).show();
+                    }
+                }).setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(MainActivity.this, "SIGN IN CANCELLED", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                builder.create().show();
+            }
+        });
 
         // Hide text if visible
         hideText.setOnClickListener(new View.OnClickListener() {
@@ -91,6 +121,17 @@ public class MainActivity extends AppCompatActivity implements
                 hideText.setEnabled(true);
             }
         });
+
+        // Custom Alert Dialog
+        /*customAlertDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CustomAlertDialog alertDialog = new CustomAlertDialog();
+                alertDialog.show(getSupportFragmentManager(), "CustomAlertDialog");
+
+                hideText.setEnabled(true);
+            }
+        });*/
     }
 
     /**
